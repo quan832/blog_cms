@@ -1,8 +1,8 @@
-<?php include "./includes/header.php" ?>
+<?php include "./includes/admin_header.php" ?>
 <div id="wrapper">
 
     <!-- Navigation -->
-    <?php include "./includes/navigation.php" ?>
+    <?php include "./includes/admin_navigation.php" ?>
 
     <div id="page-wrapper">
 
@@ -18,6 +18,7 @@
 
                     <div class="row">
                         <div class="col-xs-6">
+
                             <form action=" ">
                                 <div class="form-group">
 
@@ -32,6 +33,13 @@
                             </form>
                         </div>
                         <div class="col-xs-6">
+                            <?php
+
+                            $query = "SELECT * FROM categories LIMIT 3 ";
+
+                            $select_categories_sidebar = mysqli_query($connection, $query);
+
+                            ?>
                             <table class="table table-bordered table-hover">
                                 <thead class="thead-dark">
                                     <tr>
@@ -41,11 +49,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
+                                    <?php
+                                    while ($row = mysqli_fetch_assoc($select_categories_sidebar)) {
 
-                                    </tr>
+                                        // get name in table
+                                        $cat_id = $row['cat_id'];
+                                        $cat_title = $row['cat_title'];
+                                        // display li
+                                        echo "<tr>";
+                                        echo "<th scope='row'>{$cat_id}</th>";
+                                        echo "<td>{$cat_title}</td>";
+                                        echo "</tr>";
+                                    }
+                                    ?>
 
                                 </tbody>
                             </table>
@@ -66,4 +82,4 @@
 </div>
 <!-- /#wrapper -->
 
-<?php include "./includes/footer.php" ?>
+<?php include "./includes/admin_footer.php" ?>

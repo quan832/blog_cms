@@ -1,4 +1,4 @@
-<?php include "./includes/header.php" ?>
+<?php include "./includes/admin_header.php" ?>
 <div id="wrapper">
 
     <?php if ($connection) {
@@ -10,12 +10,12 @@
 
 
     <!-- Navigation -->
-    <?php include "./includes/navigation.php" ?>
+    <?php include "./includes/admin_navigation.php" ?>
 
     <div id="page-wrapper">
 
         <div class="container-fluid">
-
+           
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -44,4 +44,4 @@
 </div>
 <!-- /#wrapper -->
 
-<?php include "./includes/footer.php" ?>
+<?php include "./includes/admin_footer.php" ?>
