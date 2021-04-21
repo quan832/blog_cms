@@ -18,8 +18,32 @@
 
                     <div class="row">
                         <div class="col-xs-6">
+                            <?php
+                            //    add categories
+                            if (isset($_POST['submit'])) {
 
-                            <form action=" ">
+                                $cat_title = $_POST['cat_title'];
+
+                                if ($cat_title == "" || empty($cat_title)) {
+
+                                    echo "This field should not be empty";
+                                } else {
+
+                                    $query = 'INSERT INTO categories(cat_title)';
+                                    $query .= "VALUE('{$cat_title}')";
+
+                                    // add categories
+                                    $create_category_query = mysqli_query($connection, $query);
+
+                                    // if it don't happen
+                                    if (!$create_category_query) {
+
+                                        die('QUERY FAILED' . mysqli_error($connection));
+                                    }
+                                }
+                            }
+                            ?>
+                            <form action=" " method="post">
                                 <div class="form-group">
 
                                     <label for="cat-title">Add Category </label>
