@@ -57,13 +57,7 @@
                             </form>
                         </div>
                         <div class="col-xs-6">
-                            <?php
 
-                            $query = "SELECT * FROM categories LIMIT 3 ";
-
-                            $select_categories_sidebar = mysqli_query($connection, $query);
-
-                            ?>
                             <table class="table table-bordered table-hover">
                                 <thead class="thead-dark">
                                     <tr>
@@ -74,6 +68,12 @@
                                 </thead>
                                 <tbody>
                                     <?php
+
+                                    // Find All categories
+                                    $query = "SELECT * FROM categories LIMIT 10 ";
+
+                                    $select_categories_sidebar = mysqli_query($connection, $query);
+
                                     while ($row = mysqli_fetch_assoc($select_categories_sidebar)) {
 
                                         // get name in table
@@ -83,10 +83,29 @@
                                         echo "<tr>";
                                         echo "<th scope='row'>{$cat_id}</th>";
                                         echo "<td>{$cat_title}</td>";
+                                        echo "<td><a class='btn btn-danger'href='categories.php?delete={$cat_id}'>Delete</a></td>";
                                         echo "</tr>";
                                     }
                                     ?>
 
+                                    <?php
+
+                                    // delete query 
+
+                                    if (isset($_GET['delete'])) {
+
+                                        $the_cat_id = $_GET['delete'];
+
+                                        $query = "DELETE FROM categories WHERE cat_id={$the_cat_id}";
+
+                                        // send query
+                                        $delete_query = mysqli_query($connection, $query);
+
+                                        header("Location:categories.php");
+                                    }
+
+
+                                    ?>
                                 </tbody>
                             </table>
 
