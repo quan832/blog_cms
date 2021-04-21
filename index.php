@@ -5,7 +5,7 @@ include "includes/header.php";
 ?>
 
 
-<?php include "includes/navgiation.php" ?>
+<?php include "includes/navigation.php" ?>
 <!-- Page Content -->
 <div class="container">
 
